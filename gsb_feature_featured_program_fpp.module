@@ -4,6 +4,12 @@
  * Code for the GSB Feature Featured Program FPP feature.
  */
 
+include_once 'gsb_feature_featured_program_fpp.features.inc';
+/**
+ * @file
+ * Code for the GSB Feature Featured Program FPP feature.
+ */
+
  /**
  * Implements hook_entity_alter().
  */
