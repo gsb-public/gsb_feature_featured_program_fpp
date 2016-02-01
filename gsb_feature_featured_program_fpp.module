@@ -59,3 +59,42 @@ function gsb_feature_featured_program_fpp_preprocess_fieldable_panels_pane(&$var
     watchdog('gsb_feature_featured_program_fpp', 'In @function on line @line: "@message"', array('@function' => __FUNCTION__, '@line' => __LINE__, '@message' => $e->getMessage()), WATCHDOG_ERROR);
   }
 }
+
+/**
+ * Implements hook_field_extra_fields().
+ */
+function gsb_feature_featured_program_fpp_field_extra_fields() {
+
+  $extra = array();
+  $extra['fieldable_panels_pane']['featured_program']['display'] = array(
+    'gsb_time_commitment' => array(
+      'label' => t('Time Commitment'),
+      'description' => t('Time Commitment'),
+      'weight' => 0,
+    ),
+  );
+
+  return $extra;
+}
+
+/**
+ * Implements hook_fieldable_panels_pane_view().
+ */
+function gsb_feature_featured_program_fpp_fieldable_panels_pane_view($entity, $view_mode, $langcode) {
+  if ($entity->bundle != 'featured_program') {
+    return;
+  }
+  $program_instance_node = node_load($entity->field_program_instance['und'][0]['target_id']);
+  $program_node = node_load($program_instance_node->field_program['und'][0]['target_id']);
+  $time_commitment_term = taxonomy_term_load($program_node->field_time_commitment['und'][0]['tid']);
+
+  $entity->content['gsb_time_commitment'] = array(
+     '#type' => 'container',
+     '#attributes' => array(
+       'class' => array(
+          'gsb-time-commitment',
+        ),
+      ),
+     '#children' => $time_commitment_term->name,
+  );
+}
