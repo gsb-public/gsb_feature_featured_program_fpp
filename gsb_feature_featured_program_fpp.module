@@ -39,3 +39,23 @@ function gsb_feature_featured_program_fpp_form_alter(&$form, &$form_state, $form
        $form['link']['#access'] = FALSE;
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for fieldable-panels-pane.tpl.php.
+ */
+function gsb_feature_featured_program_fpp_preprocess_fieldable_panels_pane(&$variables) {
+  if ($variables['elements']['#bundle'] != 'featured_program') {
+    return;
+  }
+
+  // Add classes based on the position and color chosen.
+  try {
+    $wrapper = entity_metadata_wrapper('fieldable_panels_pane', $variables['elements']['#element']);
+    $variables['classes_array'][] = 'featured-program-color-' . $wrapper->field_color_overlay->value();
+  }
+  catch (EntityMetadataWrapperException $e) {
+    // If the fields are ever missing/renamed, Entity API will throw an
+    // exception instead of using watchdog.
+    watchdog('gsb_feature_featured_program_fpp', 'In @function on line @line: "@message"', array('@function' => __FUNCTION__, '@line' => __LINE__, '@message' => $e->getMessage()), WATCHDOG_ERROR);
+  }
+}
