@@ -81,12 +81,14 @@ function gsb_feature_featured_program_fpp_ds_layout_settings_info() {
         0 => 'field_featured_superhead',
         1 => 'field_marketing_headline',
         2 => 'field_program_instance',
+        3 => 'gsb_time_commitment',
       ),
     ),
     'fields' => array(
       'field_featured_superhead' => 'ds_content',
       'field_marketing_headline' => 'ds_content',
       'field_program_instance' => 'ds_content',
+      'gsb_time_commitment' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
