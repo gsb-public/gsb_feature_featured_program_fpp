@@ -11,4 +11,7 @@ function gsb_feature_featured_program_fpp_ctools_plugin_api($module = NULL, $api
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
 }
