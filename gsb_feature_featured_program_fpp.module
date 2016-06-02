@@ -84,9 +84,17 @@ function gsb_feature_featured_program_fpp_fieldable_panels_pane_view($entity, $v
   if ($entity->bundle != 'featured_program') {
     return;
   }
-  $program_instance_node = node_load($entity->field_program_instance['und'][0]['target_id']);
-  $program_node = node_load($program_instance_node->field_program['und'][0]['target_id']);
-  $time_commitment_term = taxonomy_term_load($program_node->field_time_commitment['und'][0]['tid']);
+  $language = $entity->language;
+
+  $program_instance_node = node_load($entity->field_program_instance[$language][0]['target_id']);
+  $program_node = node_load($program_instance_node->field_program[$language][0]['target_id']);
+  $time_commitment_term = taxonomy_term_load($program_node->field_time_commitment[$language][0]['tid']);
+
+  if ($program_node->field_program_detail[$language][0]['value'] == 1) {
+    $title = $program_node->title;
+    $url = $program_node->field_link_single[$language][0]['url'];
+    $entity->content['field_program_instance'][0]['node'][$program_instance_node->nid]['field_program'][0]['#markup'] = l($title, $url, array('attributes' => array('target' => '_blank')));
+  }
 
   $entity->content['gsb_time_commitment'] = array(
      '#type' => 'container',
