@@ -43,17 +43,9 @@ function gsb_feature_featured_program_fpp_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_program_instance' => array(
+    'field_program' => array(
       'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'ow' => TRUE,
-          'ow-el' => 'div',
-          'ow-cl' => '',
-          'ow-def-cl' => TRUE,
-          'ow-at' => '',
-          'ow-def-at' => FALSE,
-        ),
+        'ft' => array(),
       ),
     ),
   );
@@ -80,14 +72,16 @@ function gsb_feature_featured_program_fpp_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'field_featured_superhead',
         1 => 'field_marketing_headline',
-        2 => 'field_program_instance',
-        3 => 'gsb_time_commitment',
+        2 => 'field_program',
+        3 => 'gsb_program_instance',
+        4 => 'gsb_time_commitment',
       ),
     ),
     'fields' => array(
       'field_featured_superhead' => 'ds_content',
       'field_marketing_headline' => 'ds_content',
-      'field_program_instance' => 'ds_content',
+      'field_program' => 'ds_content',
+      'gsb_program_instance' => 'ds_content',
       'gsb_time_commitment' => 'ds_content',
     ),
     'classes' => array(),
@@ -99,6 +93,7 @@ function gsb_feature_featured_program_fpp_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $export['fieldable_panels_pane|featured_program|default'] = $ds_layout;
 

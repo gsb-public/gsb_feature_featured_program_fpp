@@ -45,15 +45,28 @@ function gsb_feature_featured_program_fpp_strongarm() {
       ),
     ),
     'extra_fields' => array(
-      'form' => array(),
+      'form' => array(
+        'title' => array(
+          'weight' => '0',
+        ),
+        'redirect' => array(
+          'weight' => '5',
+        ),
+      ),
       'display' => array(
         'title' => array(
           'default' => array(
-            'weight' => '4',
+            'weight' => '7',
             'visible' => FALSE,
           ),
         ),
         'gsb_time_commitment' => array(
+          'default' => array(
+            'weight' => '4',
+            'visible' => TRUE,
+          ),
+        ),
+        'gsb_program_instance' => array(
           'default' => array(
             'weight' => '3',
             'visible' => TRUE,

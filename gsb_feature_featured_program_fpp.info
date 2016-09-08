@@ -20,5 +20,4 @@ features[features_api][] = api:2
 features[field_instance][] = fieldable_panels_pane-featured_program-field_color_overlay
 features[field_instance][] = fieldable_panels_pane-featured_program-field_featured_superhead
 features[field_instance][] = fieldable_panels_pane-featured_program-field_marketing_headline
-features[field_instance][] = fieldable_panels_pane-featured_program-field_program_instance
 features[variable][] = field_bundle_settings_fieldable_panels_pane__featured_program
