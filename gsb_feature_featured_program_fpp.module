@@ -100,7 +100,7 @@ function gsb_feature_featured_program_fpp_fieldable_panels_pane_view($entity, $v
     $url = $program_node->field_link_single[$language][0]['url'];
     $entity->content['field_program'][0]['#markup'] = l($title, $url, array('attributes' => array('target' => '_blank')));
   }
-  $program_instance = _gsb_feature_program_ct_get_all_program_instances(array($program_node->nid));
+  $program_instance = _gsb_feature_program_ct_get_all_program_instances(array($program_node->nid),'featured');
   $instance_markup= '';
   if ($program_instance[0]) {
     $nid_display = node_view(node_load($program_instance[0]), 'featured_program');
