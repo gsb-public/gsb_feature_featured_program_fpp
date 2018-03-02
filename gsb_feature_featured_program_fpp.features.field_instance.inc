@@ -272,6 +272,7 @@ function gsb_feature_featured_program_fpp_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'conditions' => array(),
           'link' => 1,
         ),
